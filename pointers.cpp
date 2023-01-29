@@ -5,5 +5,6 @@ int  main(){
 
     int *s=&a;
     cout<<s;
+    bhgu
     return 0;
 }
