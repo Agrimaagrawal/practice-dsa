@@ -78,6 +78,19 @@ void deleteatpos(node* &head,int pos){
     delete(curr);
     
 }
+void reverse(node* &head){
+    node*curr=head;
+    node*prev1=NULL;
+    while(curr!=NULL){
+        node*forward=curr->next;
+        curr->next=prev1;
+        forward->prev=forward->next;
+        curr->prev=forward;
+        prev1=curr;
+        curr=forward;
+    }
+
+}
 
  int main(){
     node* temp=new node(10);
@@ -86,9 +99,8 @@ void deleteatpos(node* &head,int pos){
     insertathead(head,20);
     insertafterhead(tail,80);
     insertatpos(head,30,2);
-    deleteathead(head);
-    deleteattail(tail,head);
-    deleteatpos(head,2);
+    reverse(head);
+
     print(head);
 
     return 0;
