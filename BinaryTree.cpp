@@ -50,7 +50,32 @@ void levelorder(node*root){
         }
     }
 }
-void inorder(node*root){
+//Reverse level order traversal using stack and queues
+void reverlevel(node* root){
+    stack<node*>s;
+    queue<node*>q;
+    q.push(root);
+    
+    while(!q.empty()){
+        root=q.front();
+        s.push(root);
+        q.pop();
+        if(root->right){
+            q.push(root->right);
+        }
+        if(root->left){
+            q.push(root->left);
+        }
+        
+
+    }
+    while(!s.empty()){
+        root=s.top();
+        cout<<root->data<<" ";
+        s.pop();
+    }
+}
+/*void inorder(node*root){
     if(root==NULL){
         return;
     }
@@ -73,12 +98,14 @@ void postorder(node*root){
     postorder(root->left);
     postorder(root->right);
     cout<<root->data;
-}
+}*/
 int main(){
     node*root=NULL;
     root=buildTree(root);
+    reverlevel(root);
 
-    postorder(root);
+
+  
     return 0;
 
 }
